@@ -1,0 +1,233 @@
+:root{
+    --ground-height:200px;
+    --orbit-width: 100%;
+    --orbit-height: 100%;
+    --sun-color1: rgb(255, 255, 255);
+    --sun-color2: rgba(255, 243, 175, 0.8);
+    --sun-color3: rgba(255, 241, 160, 0.05);
+    --moon-color1: rgb(255, 255, 255);
+    --moon-color2: rgba(214, 218, 255, 0.4);
+    --moon-color3: rgba(59, 80, 126, 0.05);
+    --celestial-offset: 3vw;
+    --animation-length: 20s;
+}
+
+* {
+    box-sizing: border-box;
+    padding:0;
+    margin:0;
+}
+
+body{
+    overflow: hidden;
+}
+
+.fullWidth{
+    width: 100vw;
+}
+.sky{
+    width: 100vw;
+    height: 100vh;
+    animation: var(--animation-length) linear infinite skybox;
+}
+.stars{
+    width: 100vw;
+    height: 100vh;
+    animation: var(--animation-length) linear infinite stars;
+}
+.star{
+    position: absolute;
+    z-index: 1;
+    border-radius: 50%;
+    width: 10px;
+    height:10px;
+    background-color: white;
+}
+.star1{
+    left: 10vw;
+    top: 30vh;
+    animation: 2s linear infinite star1;
+    animation-delay: 0s;
+}
+.star2{
+    left: 30vw;
+    top: 40vh;
+    animation: 2s linear infinite star1;
+    animation-delay: 1.5s;
+}
+.star3{
+    left: 50vw;
+    top: 10vh;
+    animation: 2s linear infinite star1;
+    animation-delay: 0.5s;
+}
+.star4{
+    left: 60vw;
+    top: 55vh;
+    animation: 2s linear infinite star1;
+    animation-delay: 1s;
+}
+.star5{
+    left: 75vw;
+    top: 20vh;
+    animation: 2s linear infinite star1;
+    animation-delay: 0.75s;
+}
+.celestial-orbit{
+    position: absolute;
+    top: calc(50vh - var(--ground-height));
+    transform-origin: 50% 50%;
+    width: var(--orbit-width);
+    height: var(--orbit-height);
+    animation: var(--animation-length) linear infinite celestial-objects;
+}
+.celestial{
+    border-radius: 50%;
+    position: absolute;
+    transform-origin: 50% 50%;
+}
+.sun {
+    left: calc(var(--celestial-offset) - 100px);
+    top: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(var(--sun-color1) 15%, var(--sun-color2) 30%, var(--sun-color3) 55%);
+}
+.moon{
+    right: calc(var(--celestial-offset) - 75px);
+    top: calc(50% - 75px);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(var(--moon-color1) 20%, var(--moon-color2) 40%, var(--moon-color3) 40%);
+}
+
+.ground{
+    height: var(--ground-height);
+    position: absolute;
+    bottom: 0;
+    animation: var(--animation-length) linear infinite ground;
+    z-index: 2;
+}
+
+.mountain{
+    width: 400px;
+    height: 300px;
+    bottom: 0px;
+    position: absolute;
+    animation: var(--animation-length) linear infinite mountain;
+    z-index: 1;
+}
+.front-mountain{
+    width: 400px;
+    height: 300px;
+    bottom: 0px;
+    transform: skew(0deg, 35deg);
+}
+.back-mountain{
+    width: 200px;
+    height: 200px;
+    bottom: 100px;
+    right: 100px;
+    transform: rotate(45deg);
+}
+
+@keyframes skybox {
+    0% {
+        background-color: rgb(255, 163, 135);
+    }
+    5%{
+        background-color: rgb(146, 215, 255);
+    }
+    45%{
+        background-color: rgb(146, 215, 255);
+    }
+    50%{
+        background-color: rgb(255, 163, 135);
+    }
+    55% {
+        background-color: rgb(24, 25, 29);
+    }
+    95%{
+        background-color: rgb(24, 25, 29);
+    }
+    100% {
+        background-color: rgb(255, 163, 135);
+    }
+}@keyframes ground {
+    0% {
+        background-color: rgb(76, 107, 34);
+    }
+    5%{
+        background-color: rgb(38, 100, 32);
+    }
+    45%{
+        background-color: rgb(38, 100, 32);
+    }
+    50%{
+        background-color: rgb(76, 107, 34);
+    }
+    55% {
+        background-color: rgb(8, 24, 11);
+    }
+    95%{
+        background-color: rgb(8, 24, 11);
+    }
+    100% {
+        background-color: rgb(76, 107, 34);
+    }
+}
+@keyframes mountain {
+    0% {
+        background-color: rgb(102, 107, 34);
+    }
+    5%{
+        background-color: rgb(41, 71, 38);
+    }
+    45%{
+        background-color: rgb(41, 71, 38);
+    }
+    50%{
+        background-color: rgb(102, 107, 34);
+    }
+    55% {
+        background-color: rgb(8, 19, 7);
+    }
+    95%{
+        background-color: rgb(8, 19, 7);
+    }
+    100% {
+        background-color: rgb(102, 107, 34);
+    }
+}
+@keyframes stars {
+    0%{
+        opacity: 0;
+    }52%{
+        opacity: 0;
+    }60%{
+        opacity: 1;
+    }90%{
+        opacity: 1;
+    }98%{
+        opacity: 0;
+    }
+}
+@keyframes star1{
+    0%{
+        opacity: 0.3;
+    }
+    50%{
+        opacity: 0.6;
+    }
+    100%{
+        opacity: 0.3;
+    }
+}
+
+@keyframes celestial-objects {
+    0% {
+        transform: rotate(0deg);
+    }100%{
+        transform: rotate(360deg);
+    }
+}
