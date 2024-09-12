@@ -1,6 +1,6 @@
 :root{
     --ground-height:200px;
-    --orbit-width: 100%;
+    --orbit-width: 80%;
     --orbit-height: 100%;
     --sun-color1: rgb(255, 255, 255);
     --sun-color2: rgba(255, 243, 175, 0.8);
@@ -76,6 +76,7 @@ body{
 .celestial-orbit{
     position: absolute;
     top: calc(50vh - var(--ground-height));
+    left: calc((100% - var(--orbit-width)) * 0.5);
     transform-origin: 50% 50%;
     width: var(--orbit-width);
     height: var(--orbit-height);
